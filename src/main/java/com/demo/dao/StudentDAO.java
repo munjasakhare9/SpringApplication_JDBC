@@ -10,4 +10,6 @@ public interface StudentDAO {
 	public int deleteStudentById(int id);
 
 	public List<Student> displayAllStudent();
+
+	public Student findStudentById(int id);
 }

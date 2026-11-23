@@ -32,4 +32,15 @@ public class StudentDAOImpl implements StudentDAO {
 		List<Student> list = j.query(sql, new StudentRowMapper());
 		return list;
 	}
+
+	public Student findStudentById(int id) {
+		String sql = "select * from Student where id=?";
+		return j.queryForObject(sql, new StudentRowMapper(), id);
+	}
+
+	public Student findStudentById2(int id) {
+		String sql = "select * from Student where id=?";
+		List<Student> list = j.query(sql, new StudentRowMapper(), id);
+		return (!list.isEmpty()) ? list.get(0) : null;
+	}
 }
