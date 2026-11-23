@@ -1,5 +1,7 @@
 package com.demo.dao.impl;
 
+import java.util.List;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.demo.dao.StudentDAO;
@@ -20,4 +22,14 @@ public class StudentDAOImpl implements StudentDAO {
 		return check;
 	}
 
+	public int deleteStudentById(int id) {
+		String sql = "delete from student where id = ?";
+		return j.update(sql, id);
+	}
+
+	public List<Student> displayAllStudent() {
+		String sql = "select * from student";
+		List<Student> list = j.query(sql, new StudentRowMapper());
+		return list;
+	}
 }
